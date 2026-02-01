@@ -1,16 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 
-import os
-import json
-from dotenv import load_dotenv
+from utils.config import get_version_links
 
-load_dotenv()
-
-VERSION_LINKS = json.loads(os.getenv("VERSION_LINKS"))
+VERSION_LINKS = get_version_links()
 
 def get_all_versions_vanilla():
-    LINK = f"{VERSION_LINKS["vanilla"]+"index.html"}"
+    LINK = f"{VERSION_LINKS["vanilla"]}/index.html"
     page = requests.get(LINK)
     
     soup = BeautifulSoup(page.text, "html.parser")
@@ -27,7 +23,7 @@ def get_all_versions_vanilla():
 
 
 def get_download_link_vanilla(version):
-    LINK = f"{VERSION_LINKS["vanilla"]}download/{version}"
+    LINK = f"{VERSION_LINKS["vanilla"]}/download/{version}"
     page = requests.get(LINK)
     
     soup = BeautifulSoup(page.text, "html.parser")
