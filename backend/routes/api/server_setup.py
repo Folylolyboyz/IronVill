@@ -6,7 +6,7 @@ from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 import asyncio
 
-from websocket.terminal import MinecraftServer
+from routes.websocket.terminal import MinecraftServer
 
 
 
@@ -38,12 +38,14 @@ def send_vanilla_versions():
 
 
 # STARTING THE SERVER AND MANAGING IT
-server = MinecraftServer()
+def start_server():
+    server = MinecraftServer() 
+    return server
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-
+    
     try:
         while True:
             data = await websocket.receive_json()
@@ -51,18 +53,23 @@ async def websocket_endpoint(websocket: WebSocket):
             action = data.get("action")
 
             if action == "start":
+                server = start_server()
+                print("started")
                 server.start(data["min_ram"], data["max_ram"], data["server_name"])
                 asyncio.create_task(server.stream_output(websocket))
 
             elif action == "stop":
                 try:
+                    print("stopped")
                     server.stop()
                 except:
                     continue
 
             elif action == "command":
+                print(data["command"])
                 server.send_command(data["command"])
 
     except WebSocketDisconnect:
         pass
 
+#uvicorn routes.api.server_setup:app --reload
