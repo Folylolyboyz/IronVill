@@ -103,14 +103,14 @@ const ServerPage = ({
                             width={100}
                             height={100}
                             className="p-1 hover:scale-95 cursor-pointer transition-all duration-300 ease-out active:scale-80 border-4 border-b-[#0C0C0C] border-r-[#0C0C0C] border-t-[#4C4C4C] border-l-[#4C4C4C]"
-						/>
-                        <div className="bg-[#2C2C2C] border-4 border-b-[#0C0C0C] border-r-[#0C0C0C] border-t-[#4C4C4C] border-l-[#4C4C4C] px-8 py-4 shadow-lg">
-                            <h1 className="text-3xl font-bold text-[#FCFCFC] tracking-wide drop-shadow-[0_3px_0_rgba(0,0,0,0.8)]">
+                        />
+                        <div className="bg-(--color-bg-dark) border-4 border-b-(--color-border-dark) border-r-(--color-border-dark) border-t-(--color-border-light) border-l-(--color-border-light) px-8 py-4 shadow-lg">
+                            <h1 className="text-3xl font-bold text-(--color-text-main) tracking-wide drop-shadow-[0_3px_0_rgba(0,0,0,0.8)]">
                                 MINECRAFT SERVER MANAGER
                             </h1>
                         </div>
                     </div>
-                    <p className="text-[#C6C6C6] text-base font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                    <p className="text-(--color-text-secondary) text-base font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                         Select a server to manage
                     </p>
                 </div>

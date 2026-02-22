@@ -16,6 +16,37 @@
 	image-rendering: pixelated;
 	image-rendering: -moz-crisp-edges;
 	image-rendering: crisp-edges;
+
+	--color-bg-dark: #2C2C2C;
+	--color-bg-light: #C6C6C6;
+	--color-bg-console: #0C0C0C;
+	--color-border-dark: #0C0C0C;
+	--color-border-light: #4C4C4C;
+	--color-border-accent: #8B8B8B;
+	--color-border-green: #558B2F;
+	--color-border-green-light: #9CCC65;
+	--color-border-green-hover: #AED581;
+	--color-border-red: #B71C1C;
+	--color-border-red-light: #EF5350;
+	--color-border-red-hover: #EF9A9A;
+	--color-border-gray: #5B5B5B;
+	--color-border-gray-light: #FFFFFF;
+	--color-text-main: #FCFCFC;
+	--color-text-secondary: #C6C6C6;
+	--color-text-green: #55FF55;
+	--color-text-red: #FF5555;
+	--color-text-yellow: #FFFF55;
+	--color-text-cyan: #55FFFF;
+	--color-text-console: #CCCCCC;
+	--color-bg-green: #7CB342;
+	--color-bg-green-hover: #8BC34A;
+	--color-bg-green-active: #689F38;
+	--color-bg-red: #E53935;
+	--color-bg-red-hover: #F44336;
+	--color-bg-red-active: #C62828;
+	--color-bg-gray: #5C5C5C;
+	--color-bg-gray-hover: #7C7C7C;
+	--color-bg-gray-active: #4C4C4C;
 }
 
 /* Minecraft-style noise texture background */

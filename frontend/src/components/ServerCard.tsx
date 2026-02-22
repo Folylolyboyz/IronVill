@@ -52,18 +52,18 @@ const ServerCard = ({ server, onClick }: ServerCardProps) => {
     return (
         <div
             onClick={onClick}
-            className="group relative bg-[#C6C6C6] border-4 border-b-[#5B5B5B] border-r-[#5B5B5B] border-t-[#FFFFFF] border-l-[#FFFFFF] hover:border-t-[#EFEFEF] hover:border-l-[#EFEFEF] transition-all duration-100 cursor-pointer hover:translate-y-px shadow-[0_4px_6px_0_rgba(0,0,0,0.4)]"
+            className="group relative bg-(--color-bg-light) border-4 border-b-(--color-border-gray) border-r-(--color-border-gray) border-t-(--color-border-gray-light) border-l-(--color-border-gray-light) hover:border-t-[#EFEFEF] hover:border-l-[#EFEFEF] transition-all duration-100 cursor-pointer hover:translate-y-px shadow-[0_4px_6px_0_rgba(0,0,0,0.4)]"
         >
             {/* Inner dark container */}
-            <div className="bg-[#2C2C2C] border-4 border-b-[#4C4C4C] border-r-[#4C4C4C] border-t-[#0C0C0C] border-l-[#0C0C0C] p-5 relative">
+            <div className="bg-(--color-bg-dark) border-4 border-b-(--color-border-light) border-r-(--color-border-light) border-t-(--color-border-dark) border-l-(--color-border-dark) p-5 relative">
                 {/* Status Indicator */}
                 <div className="absolute top-3 right-3 z-10">
                     {server.status === "running" ?
                         <div className="relative">
-                            <div className="w-4 h-4 bg-[#00AA00] border-2 border-[#005500]" />
-                            <div className="absolute inset-0 w-4 h-4 bg-[#55FF55] border-2 border-[#00AA00] animate-ping" />
+                            <div className="w-4 h-4 bg-(--color-text-green) border-2 border-(--color-border-green)" />
+                            <div className="absolute inset-0 w-4 h-4 bg-(--color-text-green) border-2 border-(--color-text-green) animate-ping" />
                         </div>
-                    :   <div className="w-4 h-4 bg-[#555555] border-2 border-[#2C2C2C]" />
+                    :   <div className="w-4 h-4 bg-[#555555] border-2 border-(--color-border-dark)" />
                     }
                 </div>
 
