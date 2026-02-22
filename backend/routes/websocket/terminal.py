@@ -1,20 +1,30 @@
 import asyncio
 import subprocess
+from pathlib import Path
+import os
 from fastapi import WebSocket, WebSocketDisconnect
-
 
 class MinecraftServer:
     def __init__(self):
         self.process: subprocess.Popen | None = None
+        self.BASE_DIR = Path(__file__).resolve().parents[3]
 
-    def start(self, min_ram: int, max_ram: int):
+
+    def start(self, min_ram: int, max_ram: int, server_name: str):
         if self.process:
             return
 
-        CMD = f"java -Xmx{min_ram}G -Xms{max_ram}G -jar server.jar nogui".split()
+        SERVER_DIR = os.path.join(self.BASE_DIR, "servers", server_name)
+        JAR_PATH = os.path.join(SERVER_DIR, "server.jar")
+        CMD = f"java -Xms{min_ram}G -Xmx{max_ram}G -jar {JAR_PATH} nogui".split()
+        
+        EULA_PATH = os.path.join(SERVER_DIR, "eula.txt")
+        with open(EULA_PATH, "w") as f:
+            f.writelines(["eula=true\n"])
 
         self.process = subprocess.Popen(
             CMD,
+            cwd=SERVER_DIR,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
@@ -41,3 +51,4 @@ class MinecraftServer:
             )
             if line:
                 await websocket.send_text(line)
+

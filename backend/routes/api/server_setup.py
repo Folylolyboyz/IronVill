@@ -51,11 +51,14 @@ async def websocket_endpoint(websocket: WebSocket):
             action = data.get("action")
 
             if action == "start":
-                server.start(data["min_ram"], data["max_ram"])
+                server.start(data["min_ram"], data["max_ram"], data["server_name"])
                 asyncio.create_task(server.stream_output(websocket))
 
             elif action == "stop":
-                server.stop()
+                try:
+                    server.stop()
+                except:
+                    continue
 
             elif action == "command":
                 server.send_command(data["command"])
